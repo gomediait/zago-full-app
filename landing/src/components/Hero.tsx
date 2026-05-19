@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import DownloadDropdown from './DownloadDropdown';
-import ThreeCanvas from './ThreeCanvas';
 
 const GITHUB_RELEASES_URL = 'https://github.com/babyvibe/Deplao-releases';
 
@@ -137,19 +136,7 @@ const Hero: React.FC = () => {
 
 	return (
 		<section id="hero" className="relative overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32">
-			{/* Three.js animated background */}
-			<div className="pointer-events-none absolute inset-0 z-0 opacity-60">
-				<ThreeCanvas />
-			</div>
-			{/* Soft radial overlay để chữ vẫn dễ đọc */}
-			<div
-				className="pointer-events-none absolute inset-0 z-[1]"
-				style={{
-					background:
-						'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(246,248,255,0.0) 0%, rgba(246,248,255,0.55) 60%, rgba(246,248,255,0.92) 100%)',
-				}}
-			/>
-			<div className="mx-auto grid max-w-7xl items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 relative z-10">
+			<div className="mx-auto grid max-w-7xl items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
 				<div className="relative z-10 pt-0 sm:pt-2">
 					<div className="orbit-badge mb-6 aos-element">
 						<span className="dot-pulse" />
