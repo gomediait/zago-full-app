@@ -7,6 +7,8 @@
   🇬🇧 <a href="./README.en.md">English</a>
 </p>
 
+*Giới thiệu*:  https://babyvibe.github.io/deplao-builder/
+
 ---
 
 > Phần mềm desktop quản lý Zalo Đa tài khoản tích hợp CRM, ERP, POS, Workflow và AI Assistant giúp đội nhóm bán hàng và chăm sóc khách hàng trên Zalo vận hành tập trung trong một ứng dụng duy nhất.
@@ -437,12 +439,8 @@ Deplao ưu tiên kiến trúc chạy cục bộ trên máy người dùng:
 
 ## 🙏 Lời cảm ơn
 
-Deplao xin gửi lời cảm ơn đến dự án:  
-👉 https://github.com/RFS-ADRENO/zca-js
-
-Nhờ những đóng góp và nền tảng từ dự án này, Deplao mới có thể được hoàn thiện và ra mắt như ngày hôm nay.
-
-Rất trân trọng những giá trị mà cộng đồng open-source mang lại 💙
+Deplao xin gửi lời cảm ơn đến dự án:  👉 https://github.com/RFS-ADRENO/zca-js
+Nhờ những đóng góp và nền tảng từ dự án này, Deplao mới có thể được hoàn thiện và ra mắt như ngày hôm nay. Rất trân trọng những giá trị mà cộng đồng open-source mang lại 💙
 
 ---
 
