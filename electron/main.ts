@@ -105,13 +105,13 @@ app.commandLine.appendSwitch('lang', 'vi-VN');
 app.commandLine.appendSwitch('accept-lang', 'vi-VN,vi;q=0.9');
 
 // Đặt tên app (hiện trên taskbar, tray, macOS dock)
-app.setName('Deplao');
+app.setName('Zago App');
 
 // Windows: đặt AppUserModelId để taskbar/notification hiển thị đúng icon & tên
 // Dev: AUMID unique mỗi lần chạy → Windows tạo icon cache mới → hiện đúng icon
 // Production: AUMID cố định (khớp appId electron-builder, exe đã embed icon qua afterPack)
 if (process.platform === 'win32') {
-  app.setAppUserModelId(isDev ? `com.Deplao.dev.${Date.now()}` : 'com.Deplao.app');
+  app.setAppUserModelId(isDev ? `com.zago.dev.${Date.now()}` : 'com.zago.app');
 }
 
 // ─── Register custom protocol BEFORE app ready (required by Electron) ─────────
@@ -156,7 +156,7 @@ function createWindow() {
     height: 800,
     minWidth: 900,
     minHeight: 600,
-    title: 'Deplao',
+    title: 'Zago App',
     // Windows: frameless → custom title bar
     // macOS: hiddenInset → ẩn title bar, giữ traffic light buttons
     frame: isMac,
@@ -338,7 +338,7 @@ function createTray() {
 
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: 'Mở Deplao',
+      label: 'Mở Zago App',
       click: () => { mainWindow?.show(); mainWindow?.focus(); },
     },
     { type: 'separator' },
@@ -353,7 +353,7 @@ function createTray() {
     },
   ]);
 
-  tray.setToolTip('Deplao');
+  tray.setToolTip('Zago App');
   tray.setContextMenu(contextMenu);
 
   // Double-click tray → mở app
@@ -464,7 +464,7 @@ function registerWindowControls() {
             tray?.setImage(cachedDotIcon);
           }
         }
-        tray?.setToolTip(`Deplao — ${count} tin chưa đọc`);
+        tray?.setToolTip(`Zago App — ${count} tin chưa đọc`);
       } else {
         if (currentIconIsDot) {
           currentIconIsDot = false;
@@ -473,7 +473,7 @@ function registerWindowControls() {
             tray?.setImage(cachedNormalIcon);
           }
         }
-        tray?.setToolTip('Deplao');
+        tray?.setToolTip('Zago App');
       }
     } else {
       try { app.setBadgeCount(count > 0 ? count : 0); } catch {}
