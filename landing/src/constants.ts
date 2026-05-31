@@ -15,7 +15,7 @@ const GH_LATEST   = `${GH_RELEASES}/latest/download`;
 export const RELEASES_URL = GH_RELEASES;
 
 /** Trang GitHub repo */
-export const GITHUB_URL = 'https://github.com/gomediait/zago-full-app';
+export const GITHUB_URL = 'https://gonetwork.vn';
 
 /** Windows — NSIS installer */
 export const DOWNLOAD_FILENAME      = `Zago Care-Setup-${APP_VERSION}.exe`;

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 type FeatureId =
   | 'overview'
@@ -1240,7 +1240,7 @@ function PolicyPanel() {
       <Card>
         <SectionTitle>6. Liên hệ & Hỗ trợ</SectionTitle>
         <BulletList items={[
-          'Link github: <strong class="text-gray-200">https://github.com/gomediait/zago-full-app</strong>',
+          'Website: <strong class="text-gray-200">https://gonetwork.vn</strong>',
         ]} />
       </Card>
     </div>
