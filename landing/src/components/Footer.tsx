@@ -11,9 +11,9 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white shadow-[0_10px_24px_rgba(15,23,42,0.08)] ring-1 ring-slate-200">
-                <img src={logo} alt="Deplao" className="w-8 h-8 rounded-lg object-contain" />
+                <img src={logo} alt="Zago Care" className="w-8 h-8 rounded-lg object-contain" />
               </div>
-              <span className="font-bold text-lg text-slate-950">Deplao</span>
+              <span className="font-bold text-lg text-slate-950">Zago Care</span>
             </div>
             <p className="text-slate-600 text-sm leading-relaxed max-w-sm">
               Phần mềm quản lý Zalo chuyên nghiệp dành cho cá nhân và doanh nghiệp.
@@ -70,8 +70,8 @@ const Footer: React.FC = () => {
               {/*  <span className="text-slate-600 text-sm">Tài liệu hướng dẫn</span>*/}
               {/*</li>*/}
               {[
-                { href: 'https://t.me/deplaoCommunity', label: 'Telegram Community & Support' },
-                { href: 'https://fb.com/deplaoapp', label: 'Facebook Support' },
+                { href: 'https://t.me/zagocareCommunity', label: 'Telegram Community & Support' },
+                { href: 'https://fb.com/zagocareapp', label: 'Facebook Support' },
                 { href: 'https://t.me/babyvibe9', label: 'Báo lỗi' },
               ].map((link) => (
                 <li key={link.label}>
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
         <div className="section-divider mb-6" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>© {year} Deplao. All rights reserved.</p>
+          <p>Powered by Go Tech from Go Media Vietnam và bảo lưu quyền tác giả của: Tien Nguyen Trung</p>
           <div className="flex items-center gap-4">
             <Link to="/terms" className="hover:text-slate-900 transition-colors no-underline">Chính sách bảo mật</Link>
             <Link to="/terms" className="hover:text-slate-900 transition-colors no-underline">Điều khoản sử dụng</Link>

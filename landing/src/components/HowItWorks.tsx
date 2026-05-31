@@ -4,7 +4,7 @@ const steps = [
     icon: '⬇️',
     color: 'from-violet-600 to-purple-700',
     title: 'Tải & Cài Đặt',
-    desc: 'Tải file cài đặt Deplao. Chạy installer và cài đặt trong vài giây. Không cần kỹ thuật phức tạp.',
+    desc: 'Tải file cài đặt Zago Care. Chạy installer và cài đặt trong vài giây. Không cần kỹ thuật phức tạp.',
     detail: 'Windows · MacOS · NSIS Installer',
   },
   {

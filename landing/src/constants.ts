@@ -19,12 +19,12 @@ export const GITHUB_URL = 'https://github.com/gomediait/zago-full-app';
 
 /** Windows — NSIS installer */
 export const DOWNLOAD_FILENAME      = `Zago Care-Setup-${APP_VERSION}.exe`;
-export const DOWNLOAD_URL           = `${GH_LATEST}/${encodeURIComponent(DOWNLOAD_FILENAME)}`;
+export const DOWNLOAD_URL           = RELEASES_URL;
 
 /** macOS — Apple Silicon (M1/M2/M3) */
 export const DOWNLOAD_FILENAME_MAC_ARM64 = `Zago Care-${APP_VERSION}-arm64.dmg`;
-export const DOWNLOAD_URL_MAC_ARM64      = `${GH_LATEST}/${encodeURIComponent(DOWNLOAD_FILENAME_MAC_ARM64)}`;
+export const DOWNLOAD_URL_MAC_ARM64      = RELEASES_URL;
 
 /** macOS — Intel (x64) */
 export const DOWNLOAD_FILENAME_MAC_X64 = `Zago Care-${APP_VERSION}.dmg`;
-export const DOWNLOAD_URL_MAC_X64      = `${GH_LATEST}/${encodeURIComponent(DOWNLOAD_FILENAME_MAC_X64)}`;
+export const DOWNLOAD_URL_MAC_X64      = RELEASES_URL;
