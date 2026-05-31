@@ -35,12 +35,10 @@ const MODELS_BY_PLATFORM: Record<string, { value: string; label: string }[]> = {
     { value: 'gpt-4.1',       label: 'GPT-4.1 (legacy, non-reasoning thông minh)' },
   ],
   gemini: [
-    { value: 'gemini-3.1-pro',        label: 'Gemini 3.1 Pro (mạnh nhất — khuyên dùng)' },
-    { value: 'gemini-3.1-flash',      label: 'Gemini 3.1 Flash (nhanh, cân bằng)' },
-    { value: 'gemini-3.0-flash',      label: 'Gemini 3.0 Flash (nhanh, rẻ)' },
-    { value: 'gemini-3.0-flash-lite', label: 'Gemini 3.0 Flash Lite (siêu rẻ)' },
-    { value: 'gemini-2.5-pro',        label: 'Gemini 2.5 Pro (legacy, ổn định)' },
-    { value: 'gemini-2.5-flash',      label: 'Gemini 2.5 Flash (legacy)' },
+    { value: 'gemini-1.5-pro',        label: 'Gemini 1.5 Pro (mạnh nhất — khuyên dùng)' },
+    { value: 'gemini-1.5-flash',      label: 'Gemini 1.5 Flash (nhanh, cân bằng)' },
+    { value: 'gemini-1.5-flash-8b',   label: 'Gemini 1.5 Flash-8B (siêu rẻ)' },
+    { value: 'gemini-1.0-pro',        label: 'Gemini 1.0 Pro (cơ bản)' },
   ],
   claude: [
     { value: 'claude-4.6-sonnet-20260301',  label: 'Claude 4.6 Sonnet (mới nhất — khuyên dùng)' },
