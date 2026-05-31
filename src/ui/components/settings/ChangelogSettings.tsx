@@ -1,4 +1,6 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
+import { useUpdateStore } from '@/store/updateStore';
+import ipc from '@/lib/ipc';
 
 interface VersionEntry {
   version: string;
@@ -14,108 +16,54 @@ interface VersionEntry {
 // ─── Changelog data — thêm entry mới vào ĐẦU mảng khi có bản cập nhật ────────
 const CHANGELOG: VersionEntry[] = [
   {
-    version: '26.4.2',
+    version: '1.0.2',
     date: '05/2026',
-    type: 'patch',
+    type: 'hotfix',
     highlights: [
-      '👥 Nâng cấp CRM: rời nhiều nhóm cùng lúc và tham gia nhóm từ link mời',
-      '🐛 Sửa lỗi quét thành viên nhóm và thống kê tin nhắn theo giờ',
+      '🐛 Cập nhật danh sách model AI chuẩn xác cho API của Google',
     ],
     changes: [
       {
-        category: 'new',
-        items: [
-          'Thêm hành động rời nhiều nhóm hàng loạt trong tab Liên hệ CRM',
-          'Thêm nút tham gia nhóm trực tiếp từ kết quả quét link nhóm',
-        ],
-      },
-      {
         category: 'fixed',
         items: [
-          'Sửa lỗi phân trang khi quét thành viên từ link nhóm — giờ quét đủ toàn bộ thành viên thay vì chỉ dừng ở 100',
-          'Sửa lỗi biểu đồ Tin nhắn theo giờ trong Báo cáo không hiển thị số liệu',
+          'Sửa lỗi "model is not found" khi dùng Gemini API.',
+          'Cập nhật danh sách model thành gemini-1.5-pro, gemini-1.5-flash.',
         ],
       },
     ],
   },
   {
-    version: '26.4.1',
+    version: '1.0.1',
     date: '05/2026',
     type: 'patch',
     highlights: [
-      '🚀 Chiến dịch gửi tin hàng loạt nâng cấp: hỗ trợ soạn ảnh, gửi nhiều tin trong một lần và random nội dung',
-      '🐛 Sửa một số lỗi liên quan đến chat và xem ảnh',
+      '✨ Tối ưu hóa giao diện nhận diện thương hiệu Zago Care',
     ],
     changes: [
       {
         category: 'new',
         items: [
-          'Chiến dịch gửi tin hàng loạt hỗ trợ soạn thêm tin nhắn kèm ảnh',
-          'Gửi nhiều tin nhắn trong một lượt chiến dịch',
-          'Tính năng random nội dung giúp tin nhắn tự nhiên hơn, giảm trùng lặp',
-        ],
-      },
-      {
-        category: 'fixed',
-        items: [
-          'Sửa lỗi thanh gợi ý sticker khi chat — cuộn chuột trên thanh sticker giờ trượt ngang tự nhiên',
-          'Sửa lỗi hiển thị ảnh trong tin nhắn — giảm hiện tượng giật/nháy khi tải ảnh',
-          'Sửa lỗi trình xem ảnh — không còn nháy khi mở, kéo ảnh để zoom không còn tự đóng hộp thoại',
+          'Thay thế toàn bộ liên kết GitHub thành website chính thức của công ty (gonetwork.vn).',
+          'Đồng bộ logo, favicon và tên ứng dụng trên mọi giao diện.',
         ],
       },
     ],
   },
   {
-    version: '26.4.0',
+    version: '1.0.0',
     date: '04/2026',
     type: 'major',
     highlights: [
       '🚀 Ra mắt Zago Care — nền tảng desktop vận hành bán hàng và chăm sóc khách hàng trên Zalo trong một ứng dụng duy nhất',
       '👤 Quản lý đa tài khoản Zalo, gộp nhiều tài khoản vào một hộp thư tập trung để xử lý hội thoại nhanh hơn',
       '👥 Tích hợp CRM, Campaign, Workflow, AI, Báo cáo và Tích hợp ngoài để vận hành khép kín ngay trên desktop',
-      '🗂️ Bổ sung ERP nội bộ, quản lý nhân viên & workspace để boss và team phối hợp ngay trong cùng hệ thống',
-      '🔒 Kiến trúc lưu dữ liệu cục bộ, đăng nhập bằng QR, ưu tiên bảo mật và quyền kiểm soát dữ liệu cho người dùng',
     ],
     changes: [
       {
         category: 'new',
         items: [
-          'Ra mắt Dashboard quản lý tài khoản: theo dõi trạng thái online/offline, listener, reconnect nhanh, tìm kiếm và sắp xếp tài khoản ngay trên màn hình chính',
-          'Hỗ trợ đăng nhập và quản lý nhiều tài khoản Zalo bằng QR Code trong cùng một app, lưu phiên cục bộ an toàn và chuyển đổi tài khoản tức thì',
-          'Thêm chế độ Gộp tài khoản để xem và xử lý hội thoại từ nhiều Zalo trong một inbox hợp nhất, kèm bộ lọc, tìm kiếm và nhận diện tài khoản sở hữu từng hội thoại',
-          'Ra mắt hộp thư tập trung với bộ lọc Tất cả / Chưa đọc / Chưa trả lời / Khác / Theo nhãn, hỗ trợ tìm kiếm theo tên, biệt danh và số điện thoại',
-          'Trang chat hỗ trợ đầy đủ thao tác quan trọng: định dạng văn bản, emoji, sticker, gửi ảnh/video/file, reply, tag thành viên, tạo poll, ghi chú nhóm, nhắc nhở và gửi danh thiếp',
-          'Thêm Quick Messages không giới hạn để lưu mẫu tin nhắn, gọi nhanh bằng từ khóa và dùng được cho các tình huống tư vấn lặp lại hàng ngày',
-          'Hỗ trợ ghim không giới hạn tin nhắn trong hội thoại, Group Board tổng hợp ghim / ghi chú / bình chọn và panel quản lý media, video, file đính kèm',
-          'Ra mắt CRM đồng bộ bạn bè Zalo, thành viên nhóm, hồ sơ liên hệ, số điện thoại, giới tính, ngày sinh, nhãn và ghi chú nội bộ trong cùng một nơi',
-          'Cho phép quản lý nhãn Zalo hai chiều: tạo, đổi tên, xóa, gán/gỡ nhãn, lọc theo nhiều nhãn và dùng nhãn làm điều kiện cho workflow',
-          'Bổ sung quét thành viên nhóm nâng cao, quét nhóm lớn / nhóm ẩn / nhóm chưa tham gia từ link mời để phục vụ CRM và chiến dịch',
-          'Ra mắt Campaign gửi tin hàng loạt với nhiều loại hành động như gửi tin, kết bạn, mời vào nhóm, chạy hỗn hợp; có delay, tiến độ realtime, tạm dừng/tiếp tục và log chi tiết',
-          'Ra mắt Workflow Engine kéo-thả không cần code với mô hình Trigger → Node → Action, hỗ trợ chạy nền 24/7 và xem lịch sử chạy để debug',
-          'Workflow hỗ trợ nhiều trigger và action quan trọng: tin nhắn mới, lời mời kết bạn, sự kiện nhóm, react, cron, gửi tin, gửi ảnh/file, tìm user, lấy profile, quản lý nhóm, mute, forward, recall, poll và đọc lịch sử chat',
-          'Tích hợp node Logic, Google Sheets, AI, Telegram, Discord, Email, Notion và HTTP Request để tự động hóa quy trình bán hàng, chăm sóc khách hàng và vận hành nội bộ',
-          'Ra mắt hub Tích hợp với POS, vận chuyển và AI: hỗ trợ KiotViet, Haravan, Sapo, Nhanh.vn, Pancake POS, GHN, GHTK và các trợ lý AI dùng ngay trong chat hoặc workflow',
-          'Bổ sung Báo cáo & Phân tích với nhiều tab: Tổng quan, Tin nhắn, Liên hệ, Nhãn, Chiến dịch, Workflow, AI và Nhân viên để theo dõi hiệu suất vận hành theo thời gian thực',
-          'Ra mắt ERP nội bộ gồm Task, Calendar, Notes và phân quyền ERP để quản lý giao việc, lịch, tài liệu nội bộ và phối hợp vận hành ngay trong Zago Care',
-          'Ra mắt mô hình Workspace boss ↔ nhân viên với Relay Server, phân quyền module chi tiết, cấp tài khoản nhân viên và theo dõi báo cáo hiệu suất từng người',
-        ],
-      },
-      {
-        category: 'improved',
-        items: [
-          'Tập trung toàn bộ chat, CRM, workflow, AI, báo cáo và ERP trong một desktop app duy nhất để giảm việc chuyển đổi qua nhiều công cụ khác nhau',
-          'Tối ưu quy trình xử lý hội thoại đa tài khoản bằng sidebar chuyển nhanh, bộ lọc tập trung và cơ chế tự chuyển sang đúng tài khoản khi mở từng hội thoại',
-          'Tăng khả năng chăm sóc khách hàng bằng bộ lọc CRM theo loại liên hệ, nhãn, giới tính, ngày sinh, tương tác cuối và trạng thái chiến dịch',
-          'Nâng cao khả năng phối hợp đội nhóm với mô hình boss quản trị tập trung, nhân viên thao tác trên máy riêng nhưng dữ liệu vẫn đồng bộ về workspace chính',
-          'Tạo nền tảng mở rộng cho bán hàng đa kênh và tự động hóa dài hạn nhờ hệ thống tích hợp, workflow và báo cáo có thể kết hợp linh hoạt theo từng mô hình kinh doanh',
-        ],
-      },
-      {
-        category: 'security',
-        items: [
-          'Áp dụng kiến trúc dữ liệu lưu cục bộ trên máy người dùng: tin nhắn, danh bạ, CRM, cài đặt và media không đi qua server trung gian của hệ thống',
-          'Đăng nhập bằng QR Code, không yêu cầu lưu mật khẩu Zalo; phiên đăng nhập và credential tích hợp được lưu theo cơ chế bảo mật trên máy',
-          'Cho phép đổi thư mục lưu trữ dữ liệu, sao chép dữ liệu tự động khi migrate và chủ động sao lưu để kiểm soát an toàn dữ liệu lâu dài',
+          'Ra mắt Dashboard quản lý tài khoản.',
+          'Ra mắt tính năng AI tích hợp Gemini, OpenAI, Deepseek.',
         ],
       },
     ],
@@ -140,9 +88,14 @@ const CATEGORY_STYLES: Record<string, { icon: string; label: string; cls: string
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function ChangelogSettings() {
+  const { status, updateInfo } = useUpdateStore();
   const [expandedVersions, setExpandedVersions] = useState<Set<string>>(
     new Set([CHANGELOG[0]?.version]) // expand latest by default
   );
+
+  const handleCheckUpdate = () => {
+    ipc.update?.check();
+  };
 
   const toggle = (version: string) => {
     setExpandedVersions(prev => {
@@ -161,6 +114,10 @@ export default function ChangelogSettings() {
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold text-white">📋 Log phiên bản</h2>
         <div className="flex gap-2">
+          <button onClick={handleCheckUpdate}
+            className="text-xs text-blue-400 font-semibold hover:text-blue-300 transition-colors px-3 py-1.5 rounded-lg border border-blue-500/30 hover:bg-blue-900/30">
+            {status === 'available' || status === 'downloading' ? 'Đang tải bản mới...' : '🔄 Kiểm tra phiên bản mới'}
+          </button>
           <button onClick={expandAll}
             className="text-xs text-gray-500 hover:text-gray-300 transition-colors px-2 py-1 rounded-lg hover:bg-gray-700">
             Mở rộng tất cả

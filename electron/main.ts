@@ -1,4 +1,4 @@
-﻿import { app, BrowserWindow, ipcMain, shell, Tray, Menu, nativeImage, protocol, net } from 'electron';
+import { app, BrowserWindow, ipcMain, shell, Tray, Menu, nativeImage, protocol, net } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import { autoUpdater } from 'electron-updater';
@@ -699,6 +699,11 @@ app.whenReady().then(async () => {
       });
     });
   }
+
+  // IPC từ renderer: check updates manually
+  ipcMain.on('update:check', () => {
+    if (!isDev) autoUpdater.checkForUpdatesAndNotify();
+  });
 
   // IPC từ renderer: trigger download
   ipcMain.on('update:download', () => {

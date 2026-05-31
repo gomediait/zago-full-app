@@ -303,6 +303,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
   // ─── Auto-update ─────────────────────────────────────────────────
   update: {
+    check:    () => ipcRenderer.send('update:check'),
     download: () => ipcRenderer.send('update:download'),
     install:  () => ipcRenderer.send('update:install'),
   },
