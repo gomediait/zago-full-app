@@ -547,6 +547,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
       'update:progress',
       'update:downloaded',
       'update:error',
+      'update:not-available',
       'app:openThread',
       'app:windowFocus',
       'app:drawBadge',

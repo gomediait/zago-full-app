@@ -17,7 +17,7 @@ export interface UpdateError {
   platform?: string;
 }
 
-type UpdateStatus = 'idle' | 'available' | 'downloading' | 'downloaded' | 'error' | 'stalled';
+type UpdateStatus = 'idle' | 'available' | 'downloading' | 'downloaded' | 'error' | 'stalled' | 'not-available';
 
 interface UpdateStore {
   status: UpdateStatus;

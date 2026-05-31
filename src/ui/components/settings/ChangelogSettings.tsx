@@ -16,6 +16,23 @@ interface VersionEntry {
 // ─── Changelog data — thêm entry mới vào ĐẦU mảng khi có bản cập nhật ────────
 const CHANGELOG: VersionEntry[] = [
   {
+    version: '1.0.3',
+    date: '05/2026',
+    type: 'patch',
+    highlights: [
+      '✨ Tối ưu cơ chế tự động cập nhật',
+    ],
+    changes: [
+      {
+        category: 'new',
+        items: [
+          'Thêm nút kiểm tra phiên bản mới để chủ động cập nhật thay vì đợi hệ thống tự chạy',
+          'Hiển thị thông báo trạng thái "Đã ở bản mới nhất" khi không có bản cập nhật mới',
+        ],
+      },
+    ],
+  },
+  {
     version: '1.0.2',
     date: '05/2026',
     type: 'hotfix',
@@ -116,7 +133,7 @@ export default function ChangelogSettings() {
         <div className="flex gap-2">
           <button onClick={handleCheckUpdate}
             className="text-xs text-blue-400 font-semibold hover:text-blue-300 transition-colors px-3 py-1.5 rounded-lg border border-blue-500/30 hover:bg-blue-900/30">
-            {status === 'available' || status === 'downloading' ? 'Đang tải bản mới...' : '🔄 Kiểm tra phiên bản mới'}
+            {status === 'available' || status === 'downloading' ? 'Đang tải bản mới...' : status === 'not-available' ? '✅ Đã ở bản mới nhất' : '🔄 Kiểm tra phiên bản mới'}
           </button>
           <button onClick={expandAll}
             className="text-xs text-gray-500 hover:text-gray-300 transition-colors px-2 py-1 rounded-lg hover:bg-gray-700">

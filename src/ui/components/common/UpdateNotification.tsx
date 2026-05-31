@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useCallback, useState } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { useAppStore } from '@/store/appStore';
 import { useUpdateStore, UpdateInfo, ProgressInfo, UpdateError } from '@/store/updateStore';
 
@@ -102,11 +102,17 @@ export function UpdateNotification() {
       if (stallTimerRef.current) clearTimeout(stallTimerRef.current);
     });
 
+    const offNotAvailable = api.on('update:not-available', () => {
+      setStatus('not-available');
+      setTimeout(() => setStatus('idle'), 3000);
+    });
+
     return () => {
       offAvailable?.();
       offProgress?.();
       offDownloaded?.();
       offError?.();
+      offNotAvailable?.();
       if (countdownRef.current) clearInterval(countdownRef.current);
       if (postponeTimerRef.current) clearTimeout(postponeTimerRef.current);
       if (stallTimerRef.current) clearTimeout(stallTimerRef.current);

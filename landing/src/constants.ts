@@ -6,7 +6,7 @@
 // ──────────────────────────────────────────────────────────────
 
 /** Phiên bản hiện tại — đồng bộ với package.json root */
-export const APP_VERSION = '1.0.3';
+export const APP_VERSION = '1.0.4';
 
 const GH_RELEASES = 'https://github.com/gomediait/zago-full-app/releases';
 const GH_LATEST   = `${GH_RELEASES}/latest/download`;
