@@ -876,13 +876,20 @@ class WorkflowEngineService {
       }
 
       case 'zalo.getMessageHistory': {
-        const api = this.getApi(ctx.pageId);
-        const result: any = await api.getGroupChatHistory({
-          groupId: cfg.threadId,
-          lastMsgId: cfg.lastMsgId || '',
-          count: Number(cfg.count ?? 20),
-        } as any);
-        const messages = result?.data || [];
+        const DatabaseService = (await import('../database/DatabaseService')).default;
+        const count = Number(cfg.count ?? 20);
+        // Lấy lịch sử từ Local Database (tốc độ cao, không bị lỗi với cá nhân)
+        const dbMessages = DatabaseService.getInstance().getMessages(ctx.pageId, cfg.threadId, count);
+        
+        // Map về chuẩn format
+        const messages = dbMessages.map(m => ({
+          msgId: m.msg_id,
+          uidFrom: m.sender_id,
+          idTo: m.thread_id,
+          ts: m.timestamp,
+          isSelf: m.is_sent === 1,
+          content: { msg: typeof m.content === 'string' && m.content.startsWith('{') ? JSON.parse(m.content).msg || m.content : m.content }
+        })).reverse(); // Reverse để thứ tự từ cũ đến mới
         
         // Tính toán thời gian tin nhắn gần nhất do nhân viên (người thật) gửi
         let lastSelfMessageAt = 0;
