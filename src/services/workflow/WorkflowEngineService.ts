@@ -1,4 +1,4 @@
-﻿import EventBroadcaster from '../event/EventBroadcaster';
+import EventBroadcaster from '../event/EventBroadcaster';
 import DatabaseService from '../database/DatabaseService';
 import ConnectionManager from '../../utils/ConnectionManager';
 import { FacebookService } from '../facebook/FacebookService';
@@ -1057,7 +1057,7 @@ class WorkflowEngineService {
 
       // ── Data Nodes ───────────────────────────────────────────────────────
       case 'data.textFormat':
-        return { result: cfg.template || '' };
+        return { result: cfg.template || '', output: cfg.template || '' };
 
       case 'data.jsonParse': {
         try {
@@ -1075,13 +1075,14 @@ class WorkflowEngineService {
         else if (cfg.format === 'date') { opts.dateStyle = 'short'; }
         else if (cfg.format === 'time') { opts.timeStyle = 'short'; }
         else { opts.dateStyle = 'short'; opts.timeStyle = 'short'; }
-        return { result: new Intl.DateTimeFormat('vi-VN', opts).format(d), timestamp: d.getTime() };
+        const resStr = new Intl.DateTimeFormat('vi-VN', opts).format(d);
+        return { result: resStr, output: resStr, timestamp: d.getTime() };
       }
 
       case 'data.randomPick': {
         const options = String(cfg.options || '').split('\n').map((s: string) => s.trim()).filter(Boolean);
         const picked = options.length > 0 ? options[Math.floor(Math.random() * options.length)] : '';
-        return { result: picked };
+        return { result: picked, output: picked };
       }
 
       // ── Output Nodes ─────────────────────────────────────────────────────
@@ -1200,7 +1201,7 @@ class WorkflowEngineService {
 
             chatMsgs.push({ role: 'user', content: cfg.prompt });
             const result = await AIAssistantService.getInstance().chatForWorkflow(cfg.assistantId, chatMsgs);
-            return { result: result.result, totalTokens: result.totalTokens, model: 'assistant' };
+            return { result: result.result, output: result.result, totalTokens: result.totalTokens, model: 'assistant' };
           } catch (e: any) {
             throw new Error(`Trợ lý AI lỗi: ${e.message}`);
           }
@@ -1266,7 +1267,7 @@ class WorkflowEngineService {
           );
           const result = res.data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
           const totalTokens = (res.data.usageMetadata?.promptTokenCount || 0) + (res.data.usageMetadata?.candidatesTokenCount || 0);
-          return { result, totalTokens, model };
+          return { result, output: result, totalTokens, model };
         } else if (platform === 'claude') {
           // Anthropic Claude Messages API
           const systemText = messages.filter(m => m.role === 'system').map(m => m.content).join('\n');
@@ -1292,7 +1293,7 @@ class WorkflowEngineService {
           );
           const result = res.data.content?.[0]?.text?.trim() || '';
           const totalTokens = (res.data.usage?.input_tokens || 0) + (res.data.usage?.output_tokens || 0);
-          return { result, totalTokens, model };
+          return { result, output: result, totalTokens, model };
         } else {
           // OpenAI-compatible API (OpenAI, Deepseek, Grok/xAI, Mistral)
           const apiUrl = this.getOpenAICompatibleUrl(platform);
@@ -1318,6 +1319,7 @@ class WorkflowEngineService {
           const result = res.data.choices?.[0]?.message?.content?.trim() || '';
           return {
             result,
+            output: result,
             totalTokens: res.data.usage?.total_tokens || 0,
             model: res.data.model || model,
           };
