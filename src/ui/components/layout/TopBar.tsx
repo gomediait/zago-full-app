@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+﻿import React, { useState, useEffect, useCallback, useRef } from 'react';
 import ipc from '@/lib/ipc';
 
-const SUPPORT_GITHUB_URL = 'https://github.com/babyvibe/deplao-builder';
+const SUPPORT_GITHUB_URL = 'https://github.com/gomediait/zago-full-app';
 import { useAppStore } from '@/store/appStore';
 import { useAccountStore } from '@/store/accountStore';
 import { useUpdateStore } from '@/store/updateStore';
@@ -145,7 +145,7 @@ export default function TopBar() {
       style={{ WebkitAppRegion: 'drag' } as any}
     >
       <div className="flex items-center gap-2 px-3" style={{ WebkitAppRegion: 'no-drag' } as any}>
-        <span className="text-blue-400 font-bold text-sm">Deplao</span>
+        <span className="text-blue-400 font-bold text-sm">Zago Care</span>
         <span className="text-gray-500 text-xs">v{APP_VERSION}</span>
 
         {/* Workspace switcher — only shows when multiple workspaces exist */}
@@ -225,7 +225,7 @@ export default function TopBar() {
                   <p className="text-[10px] text-gray-500 mt-0.5">Chọn bản phù hợp với máy Mac của bạn</p>
                 </div>
                 <a
-                  href={`https://deplaoapp.com/file/Deplao-${updateInfo.version}-arm64.dmg`}
+                  href={`https://gomedia.com.vn/file/Zago Care-${updateInfo.version}-arm64.dmg`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMacDropdownOpen(false)}
@@ -238,7 +238,7 @@ export default function TopBar() {
                   </div>
                 </a>
                 <a
-                  href={`https://deplaoapp.com/file/Deplao-${updateInfo.version}.dmg`}
+                  href={`https://gomedia.com.vn/file/Zago Care-${updateInfo.version}.dmg`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMacDropdownOpen(false)}
@@ -322,7 +322,7 @@ export default function TopBar() {
         <button
           onClick={() => ipc.shell?.openExternal(SUPPORT_GITHUB_URL)}
           className="w-9 h-9 flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-yellow-400 transition-colors"
-          title={"⭐ Star Deplao trên GitHub\nDự án mã nguồn mở — báo lỗi, đóng góp tính năng tại github.com/babyvibe/deplao-builder"}
+          title={"⭐ Star Zago Care trên GitHub\nDự án mã nguồn mở — báo lỗi, đóng góp tính năng tại github.com/gomediait/zago-full-app"}
         >
           {/* GitHub icon với star overlay */}
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">

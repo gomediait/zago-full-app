@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 type FeatureId =
   | 'overview'
@@ -96,7 +96,7 @@ function OverviewPanel() {
       <div className="flex items-start gap-3">
         <span className="text-4xl leading-none">🤖</span>
         <div>
-          <h3 className="text-white font-bold text-base">Deplao</h3>
+          <h3 className="text-white font-bold text-base">Zago Care</h3>
           <p className="text-gray-400 text-xs mt-0.5">Nền tảng vận hành bán hàng nội bộ: chat đa kênh, CRM, ERP, workflow và AI trên desktop</p>
           <div className="flex gap-1.5 mt-2 flex-wrap">
             <Badge text="Desktop App" color="bg-blue-600/30 text-blue-300" />
@@ -171,7 +171,7 @@ function MultiAccountPanel() {
       <Card>
         <SectionTitle>👤 Đăng nhập nhiều tài khoản Zalo</SectionTitle>
         <Paragraph>
-          Deplao cho phép bạn đăng nhập và quản lý <strong >không giới hạn tài khoản Zalo</strong> trong một giao diện duy nhất.
+          Zago Care cho phép bạn đăng nhập và quản lý <strong >không giới hạn tài khoản Zalo</strong> trong một giao diện duy nhất.
           Mỗi tài khoản hoạt động độc lập, an toàn và không ảnh hưởng lẫn nhau.
         </Paragraph>
         <StepList steps={[
@@ -349,7 +349,7 @@ function MessagingPanel() {
           <div className="space-y-1">
             <p className="text-yellow-300 text-xs font-semibold">Không hỗ trợ nghe & gọi (thoại / video call)</p>
             <p className="text-gray-400 text-xs leading-relaxed">
-              Deplao tập trung vào nhắn tin và Tự động hoá. Các cuộc gọi thoại và video call qua Zalo
+              Zago Care tập trung vào nhắn tin và Tự động hoá. Các cuộc gọi thoại và video call qua Zalo
               không được hỗ trợ trong phiên bản hiện tại. Để thực hiện cuộc gọi, bạn cần dùng
               ứng dụng Zalo trên điện thoại hoặc Zalo PC chính thức.
             </p>
@@ -369,7 +369,7 @@ function ErpPanel() {
           <div>
             <SectionTitle>ERP quản trị nội bộ — giao việc, lịch, note, nhân sự</SectionTitle>
             <Paragraph>
-              Module ERP giúp đội nhóm quản lý công việc nội bộ ngay trong Deplao: từ giao task, theo dõi deadline,
+              Module ERP giúp đội nhóm quản lý công việc nội bộ ngay trong Zago Care: từ giao task, theo dõi deadline,
               quản lý lịch, ghi chú nghiệp vụ đến phân quyền nhân sự giữa boss và nhân viên.
             </Paragraph>
           </div>
@@ -423,7 +423,7 @@ function ErpPanel() {
       </Card>
 
       <Card>
-        <SectionTitle>💡 Khi nào nên dùng ERP trong Deplao?</SectionTitle>
+        <SectionTitle>💡 Khi nào nên dùng ERP trong Zago Care?</SectionTitle>
         <BulletList items={[
           'Khi bạn muốn <strong class="text-gray-200">giao việc từ ngay sau hội thoại khách hàng</strong> mà không cần chuyển sang app khác',
           'Khi boss cần nhìn được <strong class="text-gray-200">ai đang làm gì, ai theo dõi việc gì, việc nào sắp quá hạn</strong>',
@@ -690,7 +690,7 @@ function IntegrationPanel() {
       <Card>
         <SectionTitle>🔗 Công cụ Tích hợp — Kết nối hệ sinh thái kinh doanh</SectionTitle>
         <Paragraph>
-          Deplao cho phép tích hợp trực tiếp với các nền tảng POS, thanh toán, vận chuyển và AI phổ biến tại Việt Nam.
+          Zago Care cho phép tích hợp trực tiếp với các nền tảng POS, thanh toán, vận chuyển và AI phổ biến tại Việt Nam.
           Dữ liệu từ các nền tảng này được kết nối vào Zalo chat và Workflow, giúp bạn vận hành mọi thứ trong một ứng dụng duy nhất.
         </Paragraph>
         <div className="flex items-center gap-3 bg-blue-900/20 border border-blue-700/40 rounded-lg px-3 py-2">
@@ -773,7 +773,7 @@ function IntegrationPanel() {
       <Card>
         <SectionTitle>🌐 Webhook & Tunnel</SectionTitle>
         <BulletList items={[
-          '<strong class="text-gray-200">Webhook server nội bộ:</strong> Deplao chạy HTTP server cục bộ (port 9888) để nhận webhook từ Casso, SePay...',
+          '<strong class="text-gray-200">Webhook server nội bộ:</strong> Zago Care chạy HTTP server cục bộ (port 9888) để nhận webhook từ Casso, SePay...',
           '<strong class="text-gray-200">Tunnel công khai:</strong> Bật tunnel để tạo URL công khai từ máy cá nhân — webhook hoạt động ngay không cần VPS',
           '<strong class="text-gray-200">Bảo mật:</strong> Credential tích hợp được mã hóa AES trên máy, không lưu trên server',
         ]} />
@@ -984,7 +984,7 @@ function SecurityPanel() {
       <Card>
         <SectionTitle>🔒 Bảo mật tài khoản & Dữ liệu</SectionTitle>
         <Paragraph>
-          Deplao được xây dựng theo kiến trúc toàn bộ dữ liệu được xử lý và lưu trữ ngay trên máy tính của bạn.
+          Zago Care được xây dựng theo kiến trúc toàn bộ dữ liệu được xử lý và lưu trữ ngay trên máy tính của bạn.
         </Paragraph>
         <BulletList items={[
           '<strong class="text-gray-200">Dữ liệu lưu cục bộ 100%:</strong> Tin nhắn, danh bạ, CRM, cài đặt — tất cả được lưu trong cơ sở dữ liệu ngay trên máy bạn',
@@ -1002,7 +1002,7 @@ function SecurityPanel() {
             <p className="text-yellow-300 text-xs font-semibold">Mặc định dữ liệu lưu tại ổ C — có thể đầy nhanh!</p>
             <p className="text-gray-400 text-xs leading-relaxed">
               Theo mặc định, toàn bộ tin nhắn, ảnh, video, file đính kèm được lưu tại
-              <code style={{color:'#86efac',background:'#1f2937',padding:'1px 6px',borderRadius:4,margin:'0 3px'}}>C:\Users\...\AppData\Roaming\Deplao</code>.
+              <code style={{color:'#86efac',background:'#1f2937',padding:'1px 6px',borderRadius:4,margin:'0 3px'}}>C:\Users\...\AppData\Roaming\Zago Care</code>.
               Với nhiều tài khoản Zalo hoạt động, <strong style={{color:'#fbbf24'}}>thư mục media có thể chiếm vài GB đến hàng chục GB</strong> sau vài tháng sử dụng,
               đặc biệt khi nhận nhiều ảnh và video từ nhóm Zalo.
             </p>
@@ -1031,7 +1031,7 @@ function SecurityPanel() {
       <Card>
         <SectionTitle>📦 Nơi lưu trữ dữ liệu</SectionTitle>
         <Paragraph>
-          Mặc định, dữ liệu được lưu tại thư mục <code style={{color:'#86efac',background:'#1f2937',padding:'1px 6px',borderRadius:4}}>%AppData%\Deplao</code> trên Windows (ổ C).
+          Mặc định, dữ liệu được lưu tại thư mục <code style={{color:'#86efac',background:'#1f2937',padding:'1px 6px',borderRadius:4}}>%AppData%\Zago Care</code> trên Windows (ổ C).
           Bạn có thể thay đổi sang bất kỳ thư mục nào trong <strong >Cài đặt → Lưu trữ</strong>.
         </Paragraph>
         <div className="grid grid-cols-2 gap-2 mt-2">
@@ -1071,7 +1071,7 @@ function EmployeesPanel() {
       <Card>
         <SectionTitle>🏢 Mô hình hoạt động</SectionTitle>
         <Paragraph>
-          Deplao hỗ trợ mô hình <strong>1 Boss — nhiều nhân viên</strong>: Boss chạy app trên máy chủ, bật Relay Server,
+          Zago Care hỗ trợ mô hình <strong>1 Boss — nhiều nhân viên</strong>: Boss chạy app trên máy chủ, bật Relay Server,
           nhân viên kết nối từ máy riêng qua mạng nội bộ. Toàn bộ tin nhắn và dữ liệu đều được đồng bộ
           tập trung về máy boss — nhân viên chỉ thao tác, không lưu dữ liệu độc lập.
         </Paragraph>
@@ -1096,7 +1096,7 @@ function EmployeesPanel() {
         </Paragraph>
         <StepList steps={[
           { title: 'Boss bật Relay Server', desc: 'Vào Cài đặt → Nhân viên → Relay Server → nhập cổng → "Bật server". Bật "Tự động bật khi khởi động" để không phải làm thủ công mỗi lần.' },
-          { title: 'Nhân viên cài app riêng', desc: 'Nhân viên cài Deplao (phiên bản nhân viên) trên máy của họ, nhập địa chỉ IP:cổng của boss.' },
+          { title: 'Nhân viên cài app riêng', desc: 'Nhân viên cài Zago Care (phiên bản nhân viên) trên máy của họ, nhập địa chỉ IP:cổng của boss.' },
           { title: 'Nhân viên đăng nhập', desc: 'Nhập tài khoản/mật khẩu được boss tạo sẵn. App nhân viên kết nối relay, nhận dữ liệu từ boss.' },
           { title: 'Làm việc bình thường', desc: 'Nhân viên xem hội thoại, gửi tin nhắn được phân công — mọi thao tác đều đi qua relay về máy boss.' },
         ]} />
@@ -1186,7 +1186,7 @@ function PolicyPanel() {
       <Card>
         <SectionTitle>1. Mục đích sử dụng hợp pháp</SectionTitle>
         <Paragraph>
-          Deplao là phần mềm hỗ trợ quản lý giao tiếp trên nền tảng Zalo dành cho mục đích
+          Zago Care là phần mềm hỗ trợ quản lý giao tiếp trên nền tảng Zalo dành cho mục đích
           <strong > kinh doanh hợp pháp</strong>, chăm sóc khách hàng và Tự động hoá quy trình làm việc.
           Phần mềm <strong style={{color:'#fbbf24'}}>không được thiết kế</strong> và <strong style={{color:'#fbbf24'}}>không khuyến khích sử dụng</strong> cho các hành vi:
         </Paragraph>
@@ -1203,7 +1203,7 @@ function PolicyPanel() {
         <SectionTitle>2. Dữ liệu người dùng & Quyền riêng tư</SectionTitle>
         <BulletList items={[
           '<strong class="text-gray-200">Dữ liệu lưu hoàn toàn cục bộ</strong> trên máy tính của người dùng. Chúng tôi <em>không</em> thu thập, lưu trữ hoặc xử lý nội dung tin nhắn, danh bạ hay thông tin khách hàng của bạn trên bất kỳ server nào của chúng tôi.',
-          '<strong class="text-gray-200">Không chia sẻ với bên thứ 3</strong>: Deplao không tích hợp bất kỳ SDK thu thập dữ liệu, analytics hay quảng cáo của bên thứ 3.',
+          '<strong class="text-gray-200">Không chia sẻ với bên thứ 3</strong>: Zago Care không tích hợp bất kỳ SDK thu thập dữ liệu, analytics hay quảng cáo của bên thứ 3.',
           '<strong class="text-gray-200">Phiên Zalo</strong>: Cookie phiên Zalo được mã hóa AES và lưu cục bộ, chỉ dùng để duy trì kết nối Zalo từ máy bạn.',
         ]} />
       </Card>
@@ -1221,7 +1221,7 @@ function PolicyPanel() {
       <Card>
         <SectionTitle>4. Tuyên bố miễn trách nhiệm</SectionTitle>
         <BulletList items={[
-          'Deplao là công cụ hỗ trợ. Người dùng <strong class="text-gray-200">hoàn toàn chịu trách nhiệm</strong> về cách sử dụng phần mềm và tuân thủ pháp luật hiện hành.',
+          'Zago Care là công cụ hỗ trợ. Người dùng <strong class="text-gray-200">hoàn toàn chịu trách nhiệm</strong> về cách sử dụng phần mềm và tuân thủ pháp luật hiện hành.',
           'Chúng tôi không chịu trách nhiệm nếu tài khoản Zalo của bạn bị Zalo hạn chế do sử dụng không đúng cách hoặc vi phạm điều khoản Zalo.',
           'Dữ liệu lưu trên máy bạn là trách nhiệm của bạn. Hãy sao lưu định kỳ để tránh mất mát.',
           'Phần mềm được cung cấp "nguyên trạng" (as-is). Chúng tôi không đảm bảo phần mềm hoạt động hoàn toàn không có lỗi trong mọi môi trường.',
@@ -1231,7 +1231,7 @@ function PolicyPanel() {
       <Card>
         <SectionTitle>5. Sở hữu trí tuệ</SectionTitle>
         <Paragraph>
-          Deplao và tất cả tài liệu liên quan là tài sản trí tuệ của <strong >DepLao Team</strong>.
+          Zago Care và tất cả tài liệu liên quan là tài sản trí tuệ của <strong >Go Media Vietnam</strong>.
           Nghiêm cấm sao chép, phân phối lại, reverse-engineer hoặc bán lại phần mềm dưới bất kỳ hình thức nào
           khi chưa có sự đồng ý bằng văn bản.
         </Paragraph>
@@ -1240,7 +1240,7 @@ function PolicyPanel() {
       <Card>
         <SectionTitle>6. Liên hệ & Hỗ trợ</SectionTitle>
         <BulletList items={[
-          'Link github: <strong class="text-gray-200">https://github.com/babyvibe/deplao-builder</strong>',
+          'Link github: <strong class="text-gray-200">https://github.com/gomediait/zago-full-app</strong>',
         ]} />
       </Card>
     </div>

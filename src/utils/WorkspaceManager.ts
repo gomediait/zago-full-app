@@ -1,4 +1,4 @@
-import * as path from 'path';
+﻿import * as path from 'path';
 import * as fs from 'fs';
 import { app } from 'electron';
 import Logger from './Logger';
@@ -61,7 +61,7 @@ interface WorkspaceConfig {
 
 const CONFIG_FILENAME = 'workspaces.json';
 const DEFAULT_WORKSPACE_ID = 'default';
-const DEFAULT_DB_NAME = 'deplao-tool.db';           // existing DB
+const DEFAULT_DB_NAME = 'Zago Care-tool.db';           // existing DB
 const MAX_WORKSPACES = 5;
 
 // ── WorkspaceManager ────────────────────────────────────────────────────────
@@ -114,14 +114,14 @@ class WorkspaceManager {
 
     /**
      * First-time migration: create default workspace from existing DB.
-     * Existing deplao-tool.db stays in place — the default workspace simply points to it.
+     * Existing Zago Care-tool.db stays in place — the default workspace simply points to it.
      */
     private migrateFromLegacy(): void {
         Logger.log('[WorkspaceManager] No workspaces.json found — creating default workspace from legacy DB');
 
         // Check for custom dbFolder config
         let dbFolder = this.userDataPath;
-        const deplaoConfigPath = path.join(this.userDataPath, 'deplao-config.json');
+        const deplaoConfigPath = path.join(this.userDataPath, 'Zago Care-config.json');
         if (fs.existsSync(deplaoConfigPath)) {
             try {
                 const cfg = JSON.parse(fs.readFileSync(deplaoConfigPath, 'utf-8'));
@@ -222,9 +222,9 @@ class WorkspaceManager {
         };
 
         // Each additional workspace lives in its own folder:
-        //   workspace-{id}/deplao-tool.db + workspace-{id}/media/
+        //   workspace-{id}/Zago Care-tool.db + workspace-{id}/media/
         const wsFolder = `workspace-${id}`;
-        const wsDbRelative = `${wsFolder}/deplao-tool.db`;
+        const wsDbRelative = `${wsFolder}/Zago Care-tool.db`;
 
         if (params.type === 'local') {
             workspace.dbPath = wsDbRelative;
@@ -288,7 +288,7 @@ class WorkspaceManager {
         this.saveConfig();
 
         // Delete the workspace folder (contains DB + media)
-        const wsDbPath = ws.dbPath || `workspace-${id}/deplao-tool.db`;
+        const wsDbPath = ws.dbPath || `workspace-${id}/Zago Care-tool.db`;
         const fullDbPath = this.resolveDbPath(wsDbPath);
         const wsFolder = path.dirname(fullDbPath);
         const rootDbFolder = path.dirname(this.resolveDbPath(DEFAULT_DB_NAME));
@@ -296,7 +296,7 @@ class WorkspaceManager {
 
         Logger.log(`[WorkspaceManager] Delete: fullDbPath=${fullDbPath}, wsFolder=${wsFolder}, rootDbFolder=${rootDbFolder}`);
 
-        // SAFETY: Never delete the root deplao-tool.db (belongs to default workspace)
+        // SAFETY: Never delete the root Zago Care-tool.db (belongs to default workspace)
         if (fullDbPath === rootDbPath) {
             Logger.warn(`[WorkspaceManager] SAFETY: Refusing to delete root DB file: ${fullDbPath}`);
         } else {
@@ -380,11 +380,11 @@ class WorkspaceManager {
 
     /**
      * Resolve a workspace's dbPath to an absolute filesystem path.
-     * Respects custom dbFolder from deplao-config.json.
+     * Respects custom dbFolder from Zago Care-config.json.
      */
     public resolveDbPath(relativeDbPath: string): string {
         let dbFolder = this.userDataPath;
-        const deplaoConfigPath = path.join(this.userDataPath, 'deplao-config.json');
+        const deplaoConfigPath = path.join(this.userDataPath, 'Zago Care-config.json');
         if (fs.existsSync(deplaoConfigPath)) {
             try {
                 const cfg = JSON.parse(fs.readFileSync(deplaoConfigPath, 'utf-8'));

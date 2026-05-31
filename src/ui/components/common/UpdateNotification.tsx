@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useState } from 'react';
+﻿import { useEffect, useRef, useCallback, useState } from 'react';
 import { useAppStore } from '@/store/appStore';
 import { useUpdateStore, UpdateInfo, ProgressInfo, UpdateError } from '@/store/updateStore';
 
@@ -208,7 +208,7 @@ export function UpdateNotification() {
               <MacDownloadLinks version={updateInfo.version} isLight={isLight} />
             ) : (
               <a
-                href="https://deplaoapp.com"
+                href="https://gomedia.com.vn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex-1 text-xs font-semibold py-1.5 rounded-lg text-center transition-colors ${
@@ -265,11 +265,11 @@ export function UpdateNotification() {
 
 /** macOS: hiện 2 link tải DMG (ARM64 / Intel) */
 export function MacDownloadLinks({ version, isLight }: { version: string; isLight: boolean }) {
-  const baseUrl = 'https://deplaoapp.com/file';
+  const baseUrl = 'https://gomedia.com.vn/file';
   return (
     <div className="flex-1 flex flex-col gap-1">
       <a
-        href={`${baseUrl}/Deplao-${version}-arm64.dmg`}
+        href={`${baseUrl}/Zago Care-${version}-arm64.dmg`}
         target="_blank"
         rel="noopener noreferrer"
         className={`text-xs font-semibold py-1 rounded-lg text-center transition-colors ${
@@ -281,7 +281,7 @@ export function MacDownloadLinks({ version, isLight }: { version: string; isLigh
         🍎 Apple Silicon
       </a>
       <a
-        href={`${baseUrl}/Deplao-${version}.dmg`}
+        href={`${baseUrl}/Zago Care-${version}.dmg`}
         target="_blank"
         rel="noopener noreferrer"
         className={`text-xs font-semibold py-1 rounded-lg text-center transition-colors ${

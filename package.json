@@ -1,5 +1,5 @@
-{
-  "name": "ZagoApp",
+﻿{
+  "name": "ZagoCare",
   "version": "1.0.0",
   "description": "Phần mềm desktop quản lý Zalo Đa tài khoản tích hợp CRM, ERP, POS, Workflow và AI Assistant giúp đội nhóm bán hàng, chăm sóc khách hàng và marketing trên Zalo vận hành tập trung trong một ứng dụng duy nhất.",
   "main": "dist-electron/electron/main.js",
@@ -33,6 +33,7 @@
     "nodemailer": "^8.0.3",
     "otplib": "^13.4.0",
     "quill": "^2.0.3",
+    "react-is": "^19.2.6",
     "react-quill-new": "^3.8.3",
     "react-zoom-pan-pinch": "^3.7.0",
     "reactflow": "^11.11.4",
@@ -80,8 +81,8 @@
     "zustand": "^5.0.12"
   },
   "build": {
-    "appId": "com.zago.app",
-    "productName": "Zago App",
+    "appId": "com.zagocare.app",
+    "productName": "Zago Care",
     "forceCodeSigning": false,
     "directories": {
       "output": "dist-electron-build"
@@ -100,8 +101,18 @@
     "afterPack": "./scripts/after-pack.js",
     "win": {
       "target": [
-        { "target": "nsis", "arch": ["x64"] },
-        { "target": "dir", "arch": ["x64"] }
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
       ],
       "icon": "resources/icons/icon.ico",
       "signAndEditExecutable": false
@@ -121,8 +132,20 @@
     },
     "mac": {
       "target": [
-        { "target": "dmg", "arch": ["x64", "arm64"] },
-        { "target": "zip", "arch": ["x64", "arm64"] }
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
       ],
       "icon": "resources/icons/icon.icns",
       "category": "public.app-category.social-networking",
@@ -130,10 +153,13 @@
       "gatekeeperAssess": false
     },
     "dmg": {
-      "title": "Zago App"
+      "title": "Zago Care"
     },
     "linux": {
-      "target": ["AppImage", "deb"],
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "icon": "resources/icons/icon.png",
       "category": "Network"
     }

@@ -1,4 +1,4 @@
-import { BrowserWindow } from 'electron';
+﻿import { BrowserWindow } from 'electron';
 import * as path from 'path';
 import Logger from '../../utils/Logger';
 import DatabaseService from '../database/DatabaseService';
@@ -56,7 +56,7 @@ class EventBroadcaster {
             if (!activeIsDefault) {
                 const defaultWs = wm.getWorkspaceById('default');
                 if (defaultWs) {
-                    return { bossDbPath: wm.resolveDbPath(defaultWs.dbPath || 'deplao-tool.db'), activeIsDefault: false };
+                    return { bossDbPath: wm.resolveDbPath(defaultWs.dbPath || 'Zago Care-tool.db'), activeIsDefault: false };
                 }
             }
             return { bossDbPath: null, activeIsDefault: true };
@@ -223,7 +223,7 @@ class EventBroadcaster {
                     if (!activeIsDefault) {
                         const defaultWs = wm.getWorkspaceById('default');
                         if (defaultWs) {
-                            bossDbPath = wm.resolveDbPath(defaultWs.dbPath || 'deplao-tool.db');
+                            bossDbPath = wm.resolveDbPath(defaultWs.dbPath || 'Zago Care-tool.db');
                         }
                     }
                 } catch {}

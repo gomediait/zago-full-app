@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as path from 'path';
 import axios from 'axios';
 import { app } from 'electron';
@@ -25,7 +25,7 @@ class FileStorageService {
                 const userDataPath = app.getPath('userData');
                 let mediaRoot = userDataPath;
 
-                const configPath = path.join(userDataPath, 'deplao-config.json');
+                const configPath = path.join(userDataPath, 'Zago Care-config.json');
                 if (fs.existsSync(configPath)) {
                     try {
                         const cfg = JSON.parse(fs.readFileSync(configPath, 'utf-8'));

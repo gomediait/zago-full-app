@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── CSS Variables — dark theme defaults ───────────────────────────────────── */
+/* ── CSS Variables — Go Media Vietnam Brand ──────────────────────────── */
+/* Brand: #e4f3f3 (mint) │ #0c2a72 (navy) │ #6025e1 (purple) │ #ffc0a5 (peach) │ #fe5f01 (orange) */
 :root {
-  --color-sidebar: #1a1a2e;
-  --color-sidebar-hover: #16213e;
+  --color-sidebar:       #0c2a72;   /* Go Media navy — sidebar dark */
+  --color-sidebar-hover: #0a2260;   /* navy darker on hover          */
+  --color-brand:         #6025e1;   /* purple primary accent         */
+  --color-brand-dark:    #4a1bb0;   /* purple darker                 */
+  --color-brand-light:   #e4f3f3;   /* mint light bg                 */
 }
 
 @layer base {
@@ -292,8 +296,11 @@ html[data-theme="light"] input[type="datetime-local"] {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 html[data-theme="light"] {
-  --color-sidebar: #e8e4de;
-  --color-sidebar-hover: #d8d3cc;
+  --color-sidebar:       #0c2a72;   /* navy giữ nguyên trong light */
+  --color-sidebar-hover: #0a2260;
+  --color-brand:         #6025e1;
+  --color-brand-dark:    #4a1bb0;
+  --color-brand-light:   #e4f3f3;
 }
 
 html[data-theme="light"] body {

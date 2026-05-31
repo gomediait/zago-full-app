@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, shell, Tray, Menu, nativeImage, protocol, net } from 'electron';
+﻿import { app, BrowserWindow, ipcMain, shell, Tray, Menu, nativeImage, protocol, net } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import { autoUpdater } from 'electron-updater';
@@ -105,13 +105,13 @@ app.commandLine.appendSwitch('lang', 'vi-VN');
 app.commandLine.appendSwitch('accept-lang', 'vi-VN,vi;q=0.9');
 
 // Đặt tên app (hiện trên taskbar, tray, macOS dock)
-app.setName('Zago App');
+app.setName('Zago Care');
 
 // Windows: đặt AppUserModelId để taskbar/notification hiển thị đúng icon & tên
 // Dev: AUMID unique mỗi lần chạy → Windows tạo icon cache mới → hiện đúng icon
 // Production: AUMID cố định (khớp appId electron-builder, exe đã embed icon qua afterPack)
 if (process.platform === 'win32') {
-  app.setAppUserModelId(isDev ? `com.zago.dev.${Date.now()}` : 'com.zago.app');
+  app.setAppUserModelId(isDev ? `com.zagocare.dev.${Date.now()}` : 'com.zagocare.app');
 }
 
 // ─── Register custom protocol BEFORE app ready (required by Electron) ─────────
@@ -156,7 +156,7 @@ function createWindow() {
     height: 800,
     minWidth: 900,
     minHeight: 600,
-    title: 'Zago App',
+    title: 'Zago Care',
     // Windows: frameless → custom title bar
     // macOS: hiddenInset → ẩn title bar, giữ traffic light buttons
     frame: isMac,
@@ -338,7 +338,7 @@ function createTray() {
 
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: 'Mở Zago App',
+      label: 'Mở Zago Care',
       click: () => { mainWindow?.show(); mainWindow?.focus(); },
     },
     { type: 'separator' },
@@ -353,7 +353,7 @@ function createTray() {
     },
   ]);
 
-  tray.setToolTip('Zago App');
+  tray.setToolTip('Zago Care');
   tray.setContextMenu(contextMenu);
 
   // Double-click tray → mở app
@@ -464,7 +464,7 @@ function registerWindowControls() {
             tray?.setImage(cachedDotIcon);
           }
         }
-        tray?.setToolTip(`Zago App — ${count} tin chưa đọc`);
+        tray?.setToolTip(`Zago Care — ${count} tin chưa đọc`);
       } else {
         if (currentIconIsDot) {
           currentIconIsDot = false;
@@ -473,7 +473,7 @@ function registerWindowControls() {
             tray?.setImage(cachedNormalIcon);
           }
         }
-        tray?.setToolTip('Zago App');
+        tray?.setToolTip('Zago Care');
       }
     } else {
       try { app.setBadgeCount(count > 0 ? count : 0); } catch {}

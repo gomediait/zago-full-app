@@ -1,4 +1,4 @@
-import * as http from 'http';
+﻿import * as http from 'http';
 import Logger from '../../utils/Logger';
 import EventBroadcaster from '../event/EventBroadcaster';
 import DataSyncService, { SyncPayload } from '../employee/DataSyncService';
@@ -493,7 +493,7 @@ class HttpClientService {
             if (this.workspaceId) {
                 const ws = wm.getWorkspaceById(this.workspaceId);
                 if (ws) {
-                    targetDbPath = wm.resolveDbPath(ws.dbPath || 'deplao-tool.db');
+                    targetDbPath = wm.resolveDbPath(ws.dbPath || 'Zago Care-tool.db');
                 }
             }
 
@@ -536,7 +536,7 @@ class HttpClientService {
             if (this.workspaceId) {
                 const ws = wm.getWorkspaceById(this.workspaceId);
                 if (ws) {
-                    targetDbPath = wm.resolveDbPath(ws.dbPath || 'deplao-tool.db');
+                    targetDbPath = wm.resolveDbPath(ws.dbPath || 'Zago Care-tool.db');
                 }
             }
 
@@ -592,7 +592,7 @@ class HttpClientService {
             if (this.workspaceId) {
                 const ws = wm.getWorkspaceById(this.workspaceId);
                 if (ws) {
-                    targetDbPath = wm.resolveDbPath(ws.dbPath || 'deplao-tool.db');
+                    targetDbPath = wm.resolveDbPath(ws.dbPath || 'Zago Care-tool.db');
                 }
             }
 

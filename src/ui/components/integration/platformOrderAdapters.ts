@@ -1,4 +1,4 @@
-/**
+﻿/**
  * platformOrderAdapters — Chuẩn hoá dữ liệu đơn hàng cho từng nền tảng POS
  *
  * Mỗi nền tảng có cấu trúc API khác nhau:
@@ -279,7 +279,7 @@ function toNhanh(data: GenericOrderData) {
     },
     // channel.appOrderId = unique order ID on our side (Nhanh deduplicates by appId + appOrderId)
     channel: {
-      appOrderId: `DEPLAO-${Date.now()}`,
+      appOrderId: `Zago Care-${Date.now()}`,
       sourceName: 'deplaoapp',
     },
     shippingAddress: {

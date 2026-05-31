@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import ipc from '../../lib/ipc';
 import { useAppStore } from '@/store/appStore';
 import { v4 as uuidv4 } from 'uuid';
@@ -749,7 +749,7 @@ export default function WorkflowList({ onEdit, onOpenStore }: Props) {
       try {
         const data = JSON.parse(ev.target?.result as string);
         if (!data._deplaoWorkflow) {
-          showNotification('File không phải workflow Deplao hợp lệ', 'error');
+          showNotification('File không phải workflow Zago Care hợp lệ', 'error');
           return;
         }
         if (normalizeWorkflowChannel(data.channel) !== 'zalo' || (data.nodes || []).some((n: any) => typeof n?.type === 'string' && isUnsupportedWorkflowNodeType(n.type))) {
