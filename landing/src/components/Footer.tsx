@@ -70,9 +70,8 @@ const Footer: React.FC = () => {
               {/*  <span className="text-slate-600 text-sm">Tài liệu hướng dẫn</span>*/}
               {/*</li>*/}
               {[
-                { href: 'https://t.me/zagocareCommunity', label: 'Telegram Community & Support' },
-                { href: 'https://fb.com/zagocareapp', label: 'Facebook Support' },
-                { href: 'https://t.me/babyvibe9', label: 'Báo lỗi' },
+                { href: 'https://gonetwork.vn/lien-he/', label: 'Liên hệ Hỗ trợ' },
+                { href: 'mailto:info@gonetwork.vn', label: 'Email Hỗ trợ' },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-slate-600 hover:text-slate-950 text-sm transition-colors no-underline">

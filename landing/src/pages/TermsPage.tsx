@@ -170,7 +170,7 @@ export default function TermsPage() {
               <span className="text-blue-400">7.</span> Sở hữu trí tuệ
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Zago Care và tất cả tài liệu liên quan là tài sản trí tuệ của <strong className="text-white">DepLao Team</strong>.
+              Zago Care và tất cả tài liệu liên quan là tài sản trí tuệ của <strong className="text-white">Go Media Vietnam</strong>.
               Nghiêm cấm sao chép, phân phối lại, reverse-engineer hoặc bán lại phần mềm dưới bất kỳ hình thức nào
               khi chưa có sự đồng ý bằng văn bản.
             </p>
@@ -185,15 +185,15 @@ export default function TermsPage() {
               <div className="flex items-center gap-3 bg-gray-800/50 rounded-xl px-4 py-3">
                 <span className="text-2xl">💬</span>
                 <div>
-                  <p className="text-white text-sm font-medium">Telegram hỗ trợ</p>
-                  <a href="https://t.me/babyvibe9" className="text-blue-400 text-sm no-underline hover:underline" target="_blank" rel="noopener noreferrer">@Zago Care_support</a>
+                  <p className="text-white text-sm font-medium">Website liên hệ</p>
+                  <a href="https://gonetwork.vn/lien-he/" className="text-blue-400 text-sm no-underline hover:underline" target="_blank" rel="noopener noreferrer">https://gonetwork.vn/lien-he/</a>
                 </div>
               </div>
               <div className="flex items-center gap-3 bg-gray-800/50 rounded-xl px-4 py-3">
                 <span className="text-2xl">📧</span>
                 <div>
                   <p className="text-white text-sm font-medium">Email</p>
-                  <a href="mailto:Zago Care_support@gmail.com" className="text-blue-400 text-sm no-underline hover:underline">Zago Care_support@gmail.com</a>
+                  <a href="mailto:info@gonetwork.vn" className="text-blue-400 text-sm no-underline hover:underline">info@gonetwork.vn</a>
                 </div>
               </div>
             </div>
