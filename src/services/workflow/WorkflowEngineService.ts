@@ -882,7 +882,25 @@ class WorkflowEngineService {
           lastMsgId: cfg.lastMsgId || '',
           count: Number(cfg.count ?? 20),
         } as any);
-        return { messages: result?.data || [] };
+        const messages = result?.data || [];
+        
+        // Tính toán thời gian tin nhắn gần nhất do nhân viên (người thật) gửi
+        let lastSelfMessageAt = 0;
+        let lastSelfMessageMinutesAgo = -1;
+        
+        for (const msg of messages) {
+          if (msg.isSelf || msg.uidFrom === ctx.pageId) {
+            if (Number(msg.ts) > lastSelfMessageAt) {
+              lastSelfMessageAt = Number(msg.ts);
+            }
+          }
+        }
+        
+        if (lastSelfMessageAt > 0) {
+          lastSelfMessageMinutesAgo = Math.floor((Date.now() - lastSelfMessageAt) / 60000);
+        }
+
+        return { messages, lastSelfMessageAt, lastSelfMessageMinutesAgo };
       }
 
       case 'zalo.forwardMessage': {
@@ -1839,32 +1857,45 @@ class WorkflowEngineService {
     return rendered;
   }
 
-  private renderTemplate(template: string, ctx: ExecutionContext): string {
+  private renderTemplate(template: string, ctx: ExecutionContext): any {
+    // 1. Nếu template nguyên bản chỉ là một biến duy nhất (vd: "{{ $node.n1.messages }}")
+    // => Giữ nguyên định dạng Array/Object thay vì ép kiểu thành chuỗi
+    const exactMatch = template.trim().match(/^\{\{[\s]*([\w$.[\]]+)[\s]*}}$/);
+    if (exactMatch) {
+      return this.evaluateExpression(exactMatch[1], ctx);
+    }
+
+    // 2. Nếu là chuỗi có nhiều text + biến => Ép kiểu thành string
     return template.replace(/\{\{[\s]*([\w$.[\]]+)[\s]*}}/g, (_, expr) => {
-      try {
-        if (expr.startsWith('$trigger.'))   return String(ctx.trigger?.[expr.slice(9)] ?? '');
-        if (expr.startsWith('$var.'))       return String(ctx.variables?.[expr.slice(5)] ?? '');
-        if (expr === '$pageId')             return ctx.pageId ?? '';
-        if (expr === '$date.now')           return new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
-        if (expr === '$date.today')         return new Date().toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
-        if (expr.startsWith('$node.')) {
-          const rest = expr.slice(6);
-          const dotIdx = rest.indexOf('.');
-          if (dotIdx === -1) return '';
-          const nodeRef = rest.slice(0, dotIdx);
-          const field = rest.slice(dotIdx + 1);
-          // Match by nodeId or by node label
-          for (const [nid, ndata] of Object.entries(ctx.nodes)) {
-            const nodeDef = ctx._wfNodes?.find(n => n.id === nid);
-            const labelOrId = nodeDef?.label || nid;
-            if (nid === nodeRef || labelOrId === nodeRef) {
-              return String(this.getNestedValue(ndata.output, field) ?? '');
-            }
+      const val = this.evaluateExpression(expr, ctx);
+      return String(val ?? '');
+    });
+  }
+
+  private evaluateExpression(expr: string, ctx: ExecutionContext): any {
+    try {
+      if (expr.startsWith('$trigger.'))   return ctx.trigger?.[expr.slice(9)];
+      if (expr.startsWith('$var.'))       return ctx.variables?.[expr.slice(5)];
+      if (expr === '$pageId')             return ctx.pageId;
+      if (expr === '$date.now')           return new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+      if (expr === '$date.today')         return new Date().toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+      if (expr.startsWith('$node.')) {
+        const rest = expr.slice(6);
+        const dotIdx = rest.indexOf('.');
+        if (dotIdx === -1) return undefined;
+        const nodeRef = rest.slice(0, dotIdx);
+        const field = rest.slice(dotIdx + 1);
+        // Match by nodeId or by node label
+        for (const [nid, ndata] of Object.entries(ctx.nodes)) {
+          const nodeDef = ctx._wfNodes?.find(n => n.id === nid);
+          const labelOrId = nodeDef?.label || nid;
+          if (nid === nodeRef || labelOrId === nodeRef) {
+            return this.getNestedValue(ndata.output, field);
           }
         }
-      } catch {}
-      return '';
-    });
+      }
+    } catch {}
+    return undefined;
   }
 
   private getNestedValue(obj: any, path: string): any {
