@@ -909,10 +909,10 @@ const CONFIG_SCHEMA: Record<string, Field[]> = {
         { value: 'o3',               label: '🤖 o3 — Lý luận mạnh (OpenAI)' },
         { value: 'gpt-4.1',          label: '🤖 GPT-4.1 — Legacy non-reasoning (OpenAI)' },
         // Gemini
-        { value: 'gemini-1.5-pro',   label: '💎 Gemini 1.5 Pro — Mạnh nhất (Google — khuyến nghị)' },
-        { value: 'gemini-1.5-flash', label: '💎 Gemini 1.5 Flash — Nhanh (Google)' },
-        { value: 'gemini-1.5-flash-8b', label: '💎 Gemini 1.5 Flash-8B — Siêu rẻ (Google)' },
-        { value: 'gemini-1.0-pro',   label: '💎 Gemini 1.0 Pro — Cơ bản (Google)' },
+        { value: 'gemini-3.5-flash',       label: '💎 Gemini 3.5 Flash — Mới nhất (Google — khuyến nghị)' },
+        { value: 'gemini-3.1-pro-preview', label: '💎 Gemini 3.1 Pro — Lý luận mạnh (Google)' },
+        { value: 'gemini-2.5-pro',         label: '💎 Gemini 2.5 Pro — Cân bằng (Google)' },
+        { value: 'gemini-2.5-flash',       label: '💎 Gemini 2.5 Flash — Nhanh (Google)' },
         // Claude (Anthropic)
         { value: 'claude-4.6-sonnet-20260301',  label: '🟠 Claude 4.6 Sonnet — Mới nhất (Anthropic — khuyến nghị)' },
         { value: 'claude-4.5-sonnet-20260115',  label: '🟠 Claude 4.5 Sonnet — Cân bằng (Anthropic)' },
@@ -1004,8 +1004,8 @@ const CONFIG_SCHEMA: Record<string, Field[]> = {
       options: [
         { value: 'gpt-5.4-mini',     label: '🤖 GPT-5.4 Mini — Code, subagent (OpenAI)' },
         { value: 'gpt-5-mini',       label: '🤖 GPT-5 Mini — Cân bằng, giá tốt (OpenAI)' },
-        { value: 'gemini-1.5-pro',   label: '💎 Gemini 1.5 Pro (Google)' },
-        { value: 'gemini-1.5-flash', label: '💎 Gemini 1.5 Flash (Google)' },
+        { value: 'gemini-3.5-flash',       label: '💎 Gemini 3.5 Flash (Google)' },
+        { value: 'gemini-3.1-pro-preview', label: '💎 Gemini 3.1 Pro (Google)' },
         { value: 'claude-4.6-sonnet-20260301',  label: '🟠 Claude 4.6 Sonnet (Anthropic)' },
         { value: 'claude-4.0-haiku-20260101',   label: '🟠 Claude 4.0 Haiku — Nhanh (Anthropic)' },
         { value: 'deepseek-chat-v3.2',    label: '🔮 Deepseek V3.2 (Deepseek)' },
