@@ -1,4 +1,4 @@
-﻿import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { DEFAULT_CONFIGS } from '../workflowConfig';
 
 // ── Template types ─────────────────────────────────────────────────────────────
@@ -59,11 +59,17 @@ export function instantiateTemplate(tpl: WorkflowTemplate): {
   const idMap: Record<string, string> = {};
   tpl.nodes.forEach(n => { idMap[n.id] = uuidv4(); });
 
-  const nodes = tpl.nodes.map(n => ({
-    ...n,
-    id: idMap[n.id],
-    config: { ...n.config },
-  }));
+  const nodes = tpl.nodes.map(n => {
+    const configStr = JSON.stringify(n.config).replace(/\{\{\s*\$node\.([^.]+)\./g, (match, p1) => {
+      if (idMap[p1]) return `{{ $node.${idMap[p1]}.`;
+      return match;
+    });
+    return {
+      ...n,
+      id: idMap[n.id],
+      config: JSON.parse(configStr),
+    };
+  });
 
   const edges = tpl.edges.map(e => ({
     id: uuidv4(),
