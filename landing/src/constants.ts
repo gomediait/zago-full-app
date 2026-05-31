@@ -1,12 +1,12 @@
-﻿// ──────────────────────────────────────────────────────────────
-//  Landing page — Cấu hình dùng chung
+// ──────────────────────────────────────────────────────────────
+//  Landing page — Cấu hình dùng chung — Go Media Vietnam
 //
 //  ⚠️  Khi nâng cấp phiên bản, CHỈ CẦN SỬA APP_VERSION ở đây.
 //  Tất cả nút tải xuống sẽ tự cập nhật URL.
 // ──────────────────────────────────────────────────────────────
 
 /** Phiên bản hiện tại — đồng bộ với package.json root */
-export const APP_VERSION = '26.4.2';
+export const APP_VERSION = '1.0.0';
 
 const GH_RELEASES = 'https://github.com/gomediait/zago-full-app/releases';
 const GH_LATEST   = `${GH_RELEASES}/latest/download`;
@@ -18,13 +18,13 @@ export const RELEASES_URL = GH_RELEASES;
 export const GITHUB_URL = 'https://github.com/gomediait/zago-full-app';
 
 /** Windows — NSIS installer */
-export const DOWNLOAD_FILENAME      = `Deplao-Setup-${APP_VERSION}.exe`;
-export const DOWNLOAD_URL           = `${GH_LATEST}/${DOWNLOAD_FILENAME}`;
+export const DOWNLOAD_FILENAME      = `Zago Care-Setup-${APP_VERSION}.exe`;
+export const DOWNLOAD_URL           = `${GH_LATEST}/${encodeURIComponent(DOWNLOAD_FILENAME)}`;
 
 /** macOS — Apple Silicon (M1/M2/M3) */
-export const DOWNLOAD_FILENAME_MAC_ARM64 = `Deplao-${APP_VERSION}-arm64.dmg`;
-export const DOWNLOAD_URL_MAC_ARM64      = `${GH_LATEST}/${DOWNLOAD_FILENAME_MAC_ARM64}`;
+export const DOWNLOAD_FILENAME_MAC_ARM64 = `Zago Care-${APP_VERSION}-arm64.dmg`;
+export const DOWNLOAD_URL_MAC_ARM64      = `${GH_LATEST}/${encodeURIComponent(DOWNLOAD_FILENAME_MAC_ARM64)}`;
 
 /** macOS — Intel (x64) */
-export const DOWNLOAD_FILENAME_MAC_X64 = `Deplao-${APP_VERSION}.dmg`;
-export const DOWNLOAD_URL_MAC_X64      = `${GH_LATEST}/${DOWNLOAD_FILENAME_MAC_X64}`;
+export const DOWNLOAD_FILENAME_MAC_X64 = `Zago Care-${APP_VERSION}.dmg`;
+export const DOWNLOAD_URL_MAC_X64      = `${GH_LATEST}/${encodeURIComponent(DOWNLOAD_FILENAME_MAC_X64)}`;
