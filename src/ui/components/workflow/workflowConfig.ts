@@ -1,4 +1,4 @@
-﻿// Node type configurations: default configs, labels, descriptions
+// Node type configurations: default configs, labels, descriptions
 type NodeGroupItem = { type: string; label: string; desc: string };
 type NodeGroup = { label: string; color: string; items: NodeGroupItem[] };
 
@@ -43,6 +43,7 @@ export const NODE_GROUPS: NodeGroup[] = [
       { type: 'zalo.undoMessage',        label: 'Thu hồi tin nhắn',           desc: 'Thu hồi (xóa 2 phía) một tin nhắn đã gửi' },
       { type: 'zalo.createPoll',         label: 'Tạo bình chọn trong nhóm',   desc: 'Tạo cuộc bình chọn (poll) trong nhóm Zalo' },
       { type: 'zalo.getMessageHistory',  label: 'Lấy lịch sử tin nhắn',       desc: 'Lấy N tin nhắn gần nhất từ hội thoại' },
+      { type: 'zalo.getThreadLabels',    label: 'Đọc thẻ hội thoại',           desc: 'Kiểm tra thẻ Local đang gắn cho hội thoại (dùng với Dừng nếu...)' },
       { type: 'zalo.addReaction',        label: 'Thêm cảm xúc vào tin nhắn',  desc: 'Thả like, yêu thích, haha... vào tin nhắn' },
       { type: 'zalo.assignLabel',        label: 'Gắn nhãn hội thoại',         desc: 'Gắn Nhãn Local hoặc Zalo cho hội thoại' },
       { type: 'zalo.removeLabel',        label: 'Gỡ nhãn hội thoại',          desc: 'Gỡ Nhãn Local hoặc Zalo khỏi hội thoại' },
@@ -199,6 +200,7 @@ export const DEFAULT_CONFIGS: Record<string, Record<string, any>> = {
   'zalo.getMessageHistory':{ threadId: '{{ $trigger.threadId }}', count: 20 },
   'zalo.addReaction':      { msgId: '{{ $trigger.msgId }}', reactionType: '1' },
   // Quản lý nhãn
+  'zalo.getThreadLabels':  { threadId: '{{ $trigger.threadId }}', labelName: 'khong can AI' },
   'zalo.assignLabel':      { threadId: '{{ $trigger.threadId }}', labelSource: 'local', labelIds: [] },
   'zalo.removeLabel':      { threadId: '{{ $trigger.threadId }}', labelSource: 'local', labelIds: [] },
   'logic.if':              { left: '{{ $trigger.content }}', operator: 'contains', right: '' },

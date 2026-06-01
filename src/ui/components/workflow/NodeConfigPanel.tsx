@@ -563,6 +563,19 @@ const CONFIG_SCHEMA: Record<string, Field[]> = {
       advanced: true,
     },
   ],
+  'zalo.getThreadLabels': [
+    {
+      key: 'threadId', label: 'Hội thoại cần kiểm tra', type: 'text',
+      placeholder: '{{ $trigger.threadId }}',
+      desc: 'ID hội thoại cần đọc thẻ. Giữ mặc định để kiểm tra hội thoại đang xử lý.',
+      templateVars: ['$trigger.threadId'],
+    },
+    {
+      key: 'labelName', label: 'Tên thẻ cần kiểm tra', type: 'text',
+      placeholder: 'khong can AI',
+      desc: 'Nhập chính xác tên thẻ Local muốn kiểm tra (không phân biệt hoa/thường). Kết quả trả về biến hasLabel = true/false.',
+    },
+  ],
   'logic.if': [
     {
       key: 'left', label: 'Giá trị cần kiểm tra', type: 'text',

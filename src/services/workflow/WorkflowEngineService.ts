@@ -910,6 +910,17 @@ class WorkflowEngineService {
         return { messages, lastSelfMessageAt, lastSelfMessageMinutesAgo };
       }
 
+      case 'zalo.getThreadLabels': {
+        const DatabaseService2 = (await import('../database/DatabaseService')).default;
+        const threadLabels = DatabaseService2.getInstance().getThreadLocalLabels(ctx.pageId, cfg.threadId);
+        // Trả về mảng tên thẻ để dễ dùng trong logic.stopIf
+        const labelNames: string[] = threadLabels.map((l: any) => (l.name || '').toLowerCase().trim());
+        // hasLabel = true nếu thẻ cần kiểm tra (cfg.labelName) được gắn
+        const checkLabel = (cfg.labelName || '').toLowerCase().trim();
+        const hasLabel = checkLabel ? labelNames.includes(checkLabel) : labelNames.length > 0;
+        return { labelNames, hasLabel, count: labelNames.length };
+      }
+
       case 'zalo.forwardMessage': {
         const api = this.getApi(ctx.pageId);
         await api.forwardMessage({ msgId: cfg.msgId, toThreadId: cfg.toThreadId, toThreadType: Number(cfg.toThreadType ?? 0) } as any);
